@@ -22,6 +22,8 @@ jobs:
       run: npm run dump
 
     - name: Build the project
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: npm run dist
 
     - name: Deploy the exec_installer folder to S3
