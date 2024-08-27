@@ -13,7 +13,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '20.x'  # Use Node.js version 20.x
+        node-version: '20.x'
 
     - name: Install dependencies
       run: npm install
@@ -22,6 +22,8 @@ jobs:
       run: npm run dump
 
     - name: Build the project
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: npm run dist
 
     - name: Deploy the dist folder to S3
